@@ -36,9 +36,6 @@ fi
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-export_file=$HOME/.exports
-[ -x $export_file ] && . $export_file
-
 # Set the the list of directories that cd searches.
 # cdpath=(
 #   $cdpath
@@ -50,15 +47,6 @@ path=(
   $path
 )
 
-# is different from system to system
-binpaths=$HOME/.binpaths
-if [ -e $binpaths ]; then
-  if [ -x $binpaths ]; then
-    path=("${(@f)$($binpaths)}" $path)
-  else
-    path=("${(@f)$(<$binpaths)}" $path)
-  fi
-fi
 
 #
 # Less
