@@ -56,7 +56,7 @@ if [ -e $binpaths ]; then
   if [ -x $binpaths ]; then
     path=("${(@f)$($binpaths)}" $path)
   else
-    path=("${(@f)$(cat $binpaths)}" $path)
+    path=("${(@f)$(<$binpaths)}" $path)
   fi
 fi
 
