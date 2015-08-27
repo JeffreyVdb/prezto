@@ -98,7 +98,10 @@ alias gir='git reset'
 alias giR='git reset --patch'
 alias gix='git rm -r --cached'
 alias giX='git rm -rf --cached'
-alias gdf='git diff --name-status'
+
+function gdf() {
+  git diff --name-status "$1" | perl -ne 'print "$. " . (" " x (3 - length("$."))) . " $_"';
+}
 
 # Log (l)
 alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'
